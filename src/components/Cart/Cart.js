@@ -3,17 +3,21 @@ import "./Cart.css";
 
 const Cart = ({ cart }) => {
   // show the all data of cart send
-  console.log(cart);
+  // console.log(cart);
 
   // here this are starting value
   let total = 0;
   let shipping = 0;
-
+  let quantity = 0;
+/* Note: for of use for loop. it run in array */
   for (const product of cart) {
-    // here we want to plus all the price that cart added to order summary
-    total = total + product.price;
-    // here we want to plus all the shipping price that cart added to order summary
-    shipping = shipping + product.shipping;
+    //here we want to plus 0 quantity+ product quantity that selected
+    quantity = quantity + product.quantity; 
+
+    // here we want to plus all the price that cart added to order summary and multiply to product quantity that selected
+    total = total + product.price * product.quantity;
+    // here we want to plus all the shipping price that cart added to order summary 
+    shipping = shipping + product.shipping ;
   }
 
   /* Note: 1. toFixed(2) use 2 decimal for show. like - 1.00 */
@@ -26,7 +30,7 @@ const Cart = ({ cart }) => {
   return (
     <div className="cart">
       <h4>Order Summary </h4>
-      <p>Selected Items: {cart.length}</p>
+      <p>Selected Items: {quantity}</p>
       <p>Total Price: ${total}</p>
       <p>Total Shipping: ${shipping}</p>
       <p>Tax 10% : ${tax}</p>

@@ -1,4 +1,5 @@
 // use local storage to manage cart data
+
 const addToDb = id =>{
     let shoppingCart = {};
 
@@ -20,6 +21,20 @@ const addToDb = id =>{
     localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
 }
 
+// want to get data from local storage and when remove the page and come same page again it show last data cart added data to Order summery 
+const getStoredCart = () =>{
+    let shoppingCart = {};
+
+    //get the shopping cart from local storage
+    const storedCart = localStorage.getItem('shopping-cart');
+    if(storedCart){
+        shoppingCart = JSON.parse(storedCart);
+    }
+    return shoppingCart;
+
+}
+
+//
 const removeFromDb = id =>{
     const storedCart = localStorage.getItem('shopping-cart');
     if(storedCart){
@@ -35,8 +50,10 @@ const deleteShoppingCart = () =>{
     localStorage.removeItem('shopping-cart');
 }
 
+// must be export all the function crated
 export {
     addToDb, 
     removeFromDb,
-    deleteShoppingCart
+    deleteShoppingCart,
+    getStoredCart
 }

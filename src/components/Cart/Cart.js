@@ -1,7 +1,7 @@
 import React from "react";
 import "./Cart.css";
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, clearCart, children }) => {
   // show the all data of cart send
   // console.log(cart);
 
@@ -9,15 +9,15 @@ const Cart = ({ cart }) => {
   let total = 0;
   let shipping = 0;
   let quantity = 0;
-/* Note: for of use for loop. it run in array */
+  /* Note: for of use for loop. it run in array */
   for (const product of cart) {
     //here we want to plus 0 quantity+ product quantity that selected
-    quantity = quantity + product.quantity; 
+    quantity = quantity + product.quantity;
 
     // here we want to plus all the price that cart added to order summary and multiply to product quantity that selected
     total = total + product.price * product.quantity;
-    // here we want to plus all the shipping price that cart added to order summary 
-    shipping = shipping + product.shipping ;
+    // here we want to plus all the shipping price that cart added to order summary
+    shipping = shipping + product.shipping;
   }
 
   /* Note: 1. toFixed(2) use 2 decimal for show. like - 1.00 */
@@ -35,6 +35,9 @@ const Cart = ({ cart }) => {
       <p>Total Shipping: ${shipping}</p>
       <p>Tax 10% : ${tax}</p>
       <h5>Grand Total: ${grandTotal.toFixed(2)}</h5>
+      <button onClick={clearCart}>Clear Cart</button>
+      {/* show button dynamically */}
+      {children}
     </div>
   );
 };

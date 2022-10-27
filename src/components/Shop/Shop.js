@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
-import { addToDb, getStoredCart } from "../../utilities/local-storage-db";
+import { Link, useLoaderData } from "react-router-dom";
+import { addToDb, deleteShoppingCart, getStoredCart } from "../../utilities/local-storage-db";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Shop.css";
@@ -11,6 +11,12 @@ const Shop = () => {
   // here state for order summery
   const [cart, setCart] = useState([]);
 
+// for clear cart or delete all 
+const clearCart = () => {
+  setCart([]);
+  // for delete shopping cart
+  deleteShoppingCart();
+}
 
   // here we load data from local Storage
   /* Note: useEffect use when we load data outside of the project code */
@@ -87,7 +93,15 @@ const Shop = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart}></Cart>
+        <Cart 
+        cart={cart}
+        clearCart={clearCart}>
+          {/* to use link button go another page on click */}
+          <Link to={"/orders"}>
+            <button>Review Order</button>
+          </Link>
+
+        </Cart>
       </div>
     </div>
   );

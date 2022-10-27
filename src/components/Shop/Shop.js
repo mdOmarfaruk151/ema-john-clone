@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { addToDb, getStoredCart } from "../../utilities/local-storage-db";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Shop.css";
 
 const Shop = () => {
-  const [products, setProducts] = useState([]);
+  const products = useLoaderData();
   // we can crate useState() as we can
   // here state for order summery
   const [cart, setCart] = useState([]);
 
-  // here we get data from json file public>products.json
-  useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        // console.log('products loaded')
-      });
-  }, []);
 
   // here we load data from local Storage
   /* Note: useEffect use when we load data outside of the project code */

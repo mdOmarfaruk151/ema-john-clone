@@ -19,3 +19,22 @@
 .header a:hover{
     color: orange;
 }
+.user-name{
+    color: #FFFFFF;
+    font-size: 17px;
+    margin-left: 36px;
+    margin-right: 36px;
+}
+.btn-logout{
+    background: rgba(255, 153, 0, 0.3);
+    color: #FFFFFF;
+    font-size: 17px;
+    margin-left: 36px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+.btn-logout:hover{
+    background: rgba(255, 153, 0, 0.5);
+
+}

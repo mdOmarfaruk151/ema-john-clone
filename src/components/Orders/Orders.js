@@ -56,8 +56,12 @@ const clearCart = () => {
         <div className="cart-container">
           <Cart 
           cart={cart}
-          clearCart={clearCart}
-          ></Cart>
+          clearCart={clearCart}>
+           <Link to='/shipping'>
+            <button>Proceed Shipping</button>
+           </Link>
+
+          </Cart>
         </div>
       </div>
     </div>
